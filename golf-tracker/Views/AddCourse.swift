@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AddCourse.swift
 //  golf-tracker
 //
 //  Created by Tuukka Juusela on 21.11.2019.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct AddCourse: View {
     var body: some View {
-        Text("Hello, World!")
+        Text("Add course")
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct AddCourse_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        AddCourse()
     }
 }
