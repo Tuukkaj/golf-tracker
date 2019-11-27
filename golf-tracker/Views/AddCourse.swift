@@ -12,6 +12,7 @@ struct AddCourse: View {
     @State var holes = [3,5,2,4]
     @State var holeInput = ""
     @State var nameInput = ""
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     func delete(at offsets: IndexSet) {
         holes.remove(atOffsets: offsets)
@@ -19,6 +20,7 @@ struct AddCourse: View {
     
     func saveCourse() {
         CourseSaver.addCourse(data: Course(name: nameInput, holes: holes))
+        self.presentationMode.wrappedValue.dismiss()
     }
     
     func addHole() {
