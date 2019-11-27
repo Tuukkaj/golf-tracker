@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct AddCourse: View {
-    @State var holes = [3,5,2,4]
+    @State var holes = [] as [Int]
     @State var holeInput = ""
     @State var nameInput = ""
+    @State var showAlert = false
     var updateMainView : () -> Void
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -21,9 +22,14 @@ struct AddCourse: View {
     }
     
     func saveCourse() {
-        CourseSaver.addCourse(data: CourseData(name: nameInput, holes: holes))
-        updateMainView()
-        self.presentationMode.wrappedValue.dismiss()
+        if holes.count > 0 && nameInput.count > 0 {
+            CourseSaver.addCourse(data: CourseData(name: nameInput, holes: holes))
+            updateMainView()
+            self.presentationMode.wrappedValue.dismiss()
+        } else {
+            self.showAlert = true
+        }
+
     }
     
     func addHole() {
@@ -37,15 +43,16 @@ struct AddCourse: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Course name")
-                     .font(.headline)
-                Spacer()
-            }.padding()
+            VStack {
+                HStack {
+                    Text("Course name")
+                         .font(.headline)
+                    Spacer()
+                }
             
-            TextField("Enter course name", text: $nameInput)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+                TextField("Enter course name", text: $nameInput)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            }.padding()
             
             VStack(alignment: .leading) {
                 Text("Add holes")
@@ -70,6 +77,8 @@ struct AddCourse: View {
                 }
             } else {
                 Text("No holes added")
+                    .font(.headline)
+                Spacer()
             }
                         
             
@@ -84,6 +93,8 @@ struct AddCourse: View {
                 }.padding()
             
             .navigationBarTitle("Add course")
+        }.alert(isPresented: $showAlert) {
+            Alert(title: Text("Empty course"), message: Text("You must enter course name and add atleast one hole"), dismissButton: .default(Text("Got it!")))
         }
     }
 }
