@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6429C777238E816500AEB468 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6429C776238E816500AEB468 /* Course.swift */; };
+		6429C779238E83AE00AEB468 /* CourseSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6429C778238E83AE00AEB468 /* CourseSaver.swift */; };
 		64AECE422386F4D30086F20D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AECE412386F4D30086F20D /* AppDelegate.swift */; };
 		64AECE442386F4D30086F20D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AECE432386F4D30086F20D /* SceneDelegate.swift */; };
 		64AECE462386F4D30086F20D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AECE452386F4D30086F20D /* ContentView.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6429C776238E816500AEB468 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		6429C778238E83AE00AEB468 /* CourseSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSaver.swift; sourceTree = "<group>"; };
 		64AECE3E2386F4D30086F20D /* golf-tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "golf-tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64AECE412386F4D30086F20D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64AECE432386F4D30086F20D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6429C775238E814200AEB468 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6429C776238E816500AEB468 /* Course.swift */,
+				6429C778238E83AE00AEB468 /* CourseSaver.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		64AECE352386F4D30086F20D = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +75,7 @@
 		64AECE402386F4D30086F20D /* golf-tracker */ = {
 			isa = PBXGroup;
 			children = (
+				6429C775238E814200AEB468 /* Data */,
 				64AECE552386F6270086F20D /* Views */,
 				64AECE412386F4D30086F20D /* AppDelegate.swift */,
 				64AECE432386F4D30086F20D /* SceneDelegate.swift */,
@@ -164,9 +178,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				64AECE592386F6490086F20D /* Courses.swift in Sources */,
+				6429C777238E816500AEB468 /* Course.swift in Sources */,
 				64AECE422386F4D30086F20D /* AppDelegate.swift in Sources */,
 				64AECE5D2387009D0086F20D /* AddCourse.swift in Sources */,
 				64AECE442386F4D30086F20D /* SceneDelegate.swift in Sources */,
+				6429C779238E83AE00AEB468 /* CourseSaver.swift in Sources */,
 				64AECE462386F4D30086F20D /* ContentView.swift in Sources */,
 				64AECE5B2386F6950086F20D /* History.swift in Sources */,
 			);
@@ -306,6 +322,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"golf-tracker/Preview Content\"";
+				DEVELOPMENT_TEAM = 4SPN7R34JJ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "golf-tracker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -325,6 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"golf-tracker/Preview Content\"";
+				DEVELOPMENT_TEAM = 4SPN7R34JJ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "golf-tracker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

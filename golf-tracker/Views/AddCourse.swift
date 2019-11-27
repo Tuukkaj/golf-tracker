@@ -9,8 +9,76 @@
 import SwiftUI
 
 struct AddCourse: View {
+    @State var holes = [3,1,2,4]
+    @State var holeInput = ""
+    @State var nameInput = ""
+    
+    func delete(at offsets: IndexSet) {
+        holes.remove(atOffsets: offsets)
+    }
+    
+    func saveCourse() {
+        
+    }
+    
+    func addHole() {
+        if let num = Int(holeInput) {
+            holes.append(num)
+        }
+        
+        self.holeInput = ""
+
+    }
+    
     var body: some View {
-        Text("Add course")
+        VStack {
+            Text("Add course")
+                .font(.title)
+            
+            VStack(alignment: .leading) {
+                Text("Add holes")
+                    .font(.headline)
+                
+                HStack {
+                    TextField("Enter par", text: $holeInput)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.numberPad)
+                    Button("Add") {
+                        self.addHole()
+                    }
+                }
+            }.padding()
+            
+            
+            if holes.count > 0 {
+                List {
+                    ForEach(holes.indices, id: \.self) { i in
+                        Text("Hole: \(i): \(self.holes[i])")
+                    }.onDelete(perform: delete)
+                }
+            } else {
+                Text("No holes added")
+            }
+                        
+            HStack {
+                Text("Add course name")
+                     .font(.headline)
+                Spacer()
+            }.padding()
+            
+            TextField("Enter course name", text: $nameInput)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            
+            HStack {
+                Spacer()
+                Button(action: saveCourse) {
+                    Text("Save course")
+                        .font(.title)
+                }
+                Spacer()
+            }.padding()
+        }
     }
 }
 
