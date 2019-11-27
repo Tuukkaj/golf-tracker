@@ -13,6 +13,7 @@ struct Courses: View {
     
     func delete(at offsets: IndexSet) {
         courses.courses.remove(atOffsets: offsets)
+        CourseSaver.saveCourses(data: courses.courses)
     }
     
     func updateCourses() {
