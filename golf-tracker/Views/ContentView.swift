@@ -21,6 +21,11 @@ struct ContentView: View {
                     Image(systemName: "stopwatch")
                     Text("History")
                 }.tag(1)
+            Settings()
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }.tag(1)
         }
     }
 }

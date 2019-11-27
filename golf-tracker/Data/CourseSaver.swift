@@ -55,4 +55,13 @@ class CourseSaver {
         
         return nil
     }
+    
+    static func removeFile() {
+        let path = giveDirectory()
+        do {
+            try FileManager.default.removeItem(atPath: path)
+        } catch let error as NSError {
+            
+        }
+    }
 }
