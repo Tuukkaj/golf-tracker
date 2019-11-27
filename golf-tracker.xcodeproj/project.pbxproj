@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6429C777238E816500AEB468 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6429C776238E816500AEB468 /* Course.swift */; };
+		6429C777238E816500AEB468 /* CourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6429C776238E816500AEB468 /* CourseData.swift */; };
 		6429C779238E83AE00AEB468 /* CourseSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6429C778238E83AE00AEB468 /* CourseSaver.swift */; };
 		6429C77B238E9ABD00AEB468 /* ObservedCourses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6429C77A238E9ABD00AEB468 /* ObservedCourses.swift */; };
+		6429C77D238EA4C600AEB468 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6429C77C238EA4C600AEB468 /* Course.swift */; };
 		64AECE422386F4D30086F20D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AECE412386F4D30086F20D /* AppDelegate.swift */; };
 		64AECE442386F4D30086F20D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AECE432386F4D30086F20D /* SceneDelegate.swift */; };
 		64AECE462386F4D30086F20D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AECE452386F4D30086F20D /* ContentView.swift */; };
@@ -22,9 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6429C776238E816500AEB468 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		6429C776238E816500AEB468 /* CourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseData.swift; sourceTree = "<group>"; };
 		6429C778238E83AE00AEB468 /* CourseSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSaver.swift; sourceTree = "<group>"; };
 		6429C77A238E9ABD00AEB468 /* ObservedCourses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedCourses.swift; sourceTree = "<group>"; };
+		6429C77C238EA4C600AEB468 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		64AECE3E2386F4D30086F20D /* golf-tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "golf-tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64AECE412386F4D30086F20D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64AECE432386F4D30086F20D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +54,7 @@
 		6429C775238E814200AEB468 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				6429C776238E816500AEB468 /* Course.swift */,
+				6429C776238E816500AEB468 /* CourseData.swift */,
 				6429C778238E83AE00AEB468 /* CourseSaver.swift */,
 				6429C77A238E9ABD00AEB468 /* ObservedCourses.swift */,
 			);
@@ -105,6 +107,7 @@
 				64AECE5C2387009D0086F20D /* AddCourse.swift */,
 				64AECE582386F6490086F20D /* Courses.swift */,
 				64AECE5A2386F6950086F20D /* History.swift */,
+				6429C77C238EA4C600AEB468 /* Course.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,7 +184,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				64AECE592386F6490086F20D /* Courses.swift in Sources */,
-				6429C777238E816500AEB468 /* Course.swift in Sources */,
+				6429C777238E816500AEB468 /* CourseData.swift in Sources */,
+				6429C77D238EA4C600AEB468 /* Course.swift in Sources */,
 				64AECE422386F4D30086F20D /* AppDelegate.swift in Sources */,
 				64AECE5D2387009D0086F20D /* AddCourse.swift in Sources */,
 				64AECE442386F4D30086F20D /* SceneDelegate.swift in Sources */,

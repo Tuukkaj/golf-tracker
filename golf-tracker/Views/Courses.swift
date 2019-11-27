@@ -30,13 +30,21 @@ struct Courses: View {
                 NavigationLink(destination: AddCourse(updateMainView: updateCourses)) {
                     Text("Add course")
                     Image(systemName:"plus")
+                }.padding()
+                
+                if courses.courses.count > 0 {
+                    List {
+                        ForEach(courses.courses.indices, id: \.self) { i in
+                            Text("\(self.courses.courses[i].name)")
+                        }.onDelete(perform: delete)
+                    }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                } else {
+                    
+                        Text("No courses added yet")
+                                        .font(.headline)
+                                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                    .padding()
                 }
-                List {
-                    ForEach(courses.courses.indices, id: \.self) { i in
-                        Text("\(self.courses.courses[i].name)")
-                    }.onDelete(perform: delete)
-                }
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             }.padding()
         
             .navigationBarTitle("Courses")
