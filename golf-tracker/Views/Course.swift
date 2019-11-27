@@ -30,13 +30,16 @@ struct Course: View {
                     Text("Hole: \(i + 1) - Par \(self.course.holes[i])")
                 }
             }
-            
-            Spacer()
-            
-            Button(action: {() in NSLog("Play pressed")}) {
-                Text("Play course").font(.title)
-                Image(systemName: "play")
+                        
+            HStack {
+                Spacer()
+                Button(action: {() in NSLog("Play pressed")}) {
+                    Text("Play course").font(.title)
+                    Image(systemName: "play")
+                }
+                Spacer()
             }
+
             
         .navigationBarTitle(course.name)
         }
