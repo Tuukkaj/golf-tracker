@@ -37,12 +37,8 @@ struct AddCourse: View {
     
     var body: some View {
         VStack {
-            Text("Add course")
-                .font(.title)
-            
-            
             HStack {
-                Text("Add course name")
+                Text("Course name")
                      .font(.headline)
                 Spacer()
             }.padding()
@@ -86,6 +82,8 @@ struct AddCourse: View {
                 }
                 Spacer()
             }.padding()
+            
+            .navigationBarTitle("Add course")
         }
     }
 }
