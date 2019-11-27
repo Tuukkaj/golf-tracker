@@ -12,6 +12,8 @@ struct AddCourse: View {
     @State var holes = [3,5,2,4]
     @State var holeInput = ""
     @State var nameInput = ""
+    var updateMainView : () -> Void
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     func delete(at offsets: IndexSet) {
@@ -20,6 +22,7 @@ struct AddCourse: View {
     
     func saveCourse() {
         CourseSaver.addCourse(data: Course(name: nameInput, holes: holes))
+        updateMainView()
         self.presentationMode.wrappedValue.dismiss()
     }
     
@@ -89,6 +92,8 @@ struct AddCourse: View {
 
 struct AddCourse_Previews: PreviewProvider {
     static var previews: some View {
-        AddCourse()
+        AddCourse(updateMainView: { () in
+            NSLog("Preview test")
+        })
     }
 }

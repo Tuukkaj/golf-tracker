@@ -27,7 +27,7 @@ struct Courses: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading){
-                NavigationLink(destination: AddCourse()) {
+                NavigationLink(destination: AddCourse(updateMainView: updateCourses)) {
                     Text("Add course")
                     Image(systemName:"plus")
                 }
