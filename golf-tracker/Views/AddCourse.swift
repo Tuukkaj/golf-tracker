@@ -35,6 +35,17 @@ struct AddCourse: View {
             Text("Add course")
                 .font(.title)
             
+            
+            HStack {
+                Text("Add course name")
+                     .font(.headline)
+                Spacer()
+            }.padding()
+            
+            TextField("Enter course name", text: $nameInput)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            
             VStack(alignment: .leading) {
                 Text("Add holes")
                     .font(.headline)
@@ -53,28 +64,20 @@ struct AddCourse: View {
             if holes.count > 0 {
                 List {
                     ForEach(holes.indices, id: \.self) { i in
-                        Text("Hole: \(i): \(self.holes[i])")
+                        Text("\(i): Par \(self.holes[i])")
                     }.onDelete(perform: delete)
                 }
             } else {
                 Text("No holes added")
             }
                         
-            HStack {
-                Text("Add course name")
-                     .font(.headline)
-                Spacer()
-            }.padding()
-            
-            TextField("Enter course name", text: $nameInput)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
             
             HStack {
                 Spacer()
                 Button(action: saveCourse) {
                     Text("Save course")
                         .font(.title)
+                    Image(systemName:"plus")
                 }
                 Spacer()
             }.padding()
