@@ -9,7 +9,11 @@
 import SwiftUI
 
 struct Courses: View {
-
+    init() {
+        if var courses = CourseSaver.loadCourses() {
+            NSLog(String(describing: courses))
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -24,7 +28,7 @@ struct Courses: View {
             }.padding()
            
 
-            .navigationBarTitle("Courses list --- ")
+            .navigationBarTitle("Courses")
         }
     }
 }

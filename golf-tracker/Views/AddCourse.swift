@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct AddCourse: View {
-    @State var holes = [3,1,2,4]
+    @State var holes = [3,5,2,4]
     @State var holeInput = ""
     @State var nameInput = ""
     
@@ -18,7 +18,7 @@ struct AddCourse: View {
     }
     
     func saveCourse() {
-        
+        CourseSaver.addCourse(data: Course(name: nameInput, holes: holes))
     }
     
     func addHole() {
