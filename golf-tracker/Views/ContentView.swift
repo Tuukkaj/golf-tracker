@@ -13,13 +13,13 @@ struct ContentView: View {
         TabView {
             Courses()
                 .tabItem {
-                    Image(systemName: "1.circle")
-                    Text("First")
+                    Image(systemName: "list.bullet")
+                    Text("Courses")
                 }.tag(0)
             History()
                 .tabItem {
-                    Image(systemName: "2.circle")
-                    Text("Second")
+                    Image(systemName: "stopwatch")
+                    Text("History")
                 }.tag(1)
         }
     }
