@@ -81,7 +81,7 @@ struct AddCourse: View {
                     Image(systemName:"plus")
                 }
                 Spacer()
-            }.padding()
+                }.padding()
             
             .navigationBarTitle("Add course")
         }
