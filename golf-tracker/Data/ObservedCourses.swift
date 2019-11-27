@@ -9,5 +9,5 @@
 import Foundation
 
 class ObservedCourses: ObservableObject {
-    @Published var courses = [] as [Course]
+    @Published var courses = [] as [CourseData]
 }

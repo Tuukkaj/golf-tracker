@@ -35,7 +35,12 @@ struct Courses: View {
                 if courses.courses.count > 0 {
                     List {
                         ForEach(courses.courses.indices, id: \.self) { i in
-                            Text("\(self.courses.courses[i].name)")
+                            HStack {
+                                NavigationLink(destination: Course(course: self.courses.courses[i])) {
+                                    Text("\(self.courses.courses[i].name)")
+                                }
+                            }.padding()
+                            
                         }.onDelete(perform: delete)
                     }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
                 } else {
@@ -43,7 +48,7 @@ struct Courses: View {
                         Text("No courses added yet")
                                         .font(.headline)
                                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-                    .padding()
+                                        .padding()
                 }
             }.padding()
         

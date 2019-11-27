@@ -20,8 +20,8 @@ class CourseSaver {
         return pathWithFileName
     }
     
-    static func addCourse(data: Course) {
-        var courses = [] as [Course]
+    static func addCourse(data: CourseData) {
+        var courses = [] as [CourseData]
         
         if let loadedCourses = self.loadCourses() {
             courses.append(contentsOf: loadedCourses)
@@ -32,7 +32,7 @@ class CourseSaver {
         saveCourses(data: courses)
     }
     
-    static func saveCourses(data: [Course]) {
+    static func saveCourses(data: [CourseData]) {
         let pathWithFileName = self.giveDirectory()
 
         do {
@@ -43,12 +43,12 @@ class CourseSaver {
         }
     }
     
-    static func loadCourses() -> [Course]? {
+    static func loadCourses() -> [CourseData]? {
         let pathWithFileName = self.giveDirectory()
         
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: pathWithFileName))
-            return try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Course]
+            return try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [CourseData]
         } catch {
             NSLog("load error")
         }

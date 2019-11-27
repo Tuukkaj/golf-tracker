@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Course: NSObject, NSCoding {
+class CourseData: NSObject, NSCoding {
     var name : String
     var holes : [Int]
     

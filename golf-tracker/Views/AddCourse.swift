@@ -21,7 +21,7 @@ struct AddCourse: View {
     }
     
     func saveCourse() {
-        CourseSaver.addCourse(data: Course(name: nameInput, holes: holes))
+        CourseSaver.addCourse(data: CourseData(name: nameInput, holes: holes))
         updateMainView()
         self.presentationMode.wrappedValue.dismiss()
     }
