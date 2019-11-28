@@ -43,4 +43,37 @@ class PlayState: NSObject, NSCoding, ObservableObject{
         encoder.encode(played, forKey: "played")
         encoder.encode(isPlaying, forKey: "isPlaying")
     }
+    
+    func load() {
+        let defaultDB = UserDefaults.standard
+        let tempData = defaultDB.object(forKey: "playState") as? Data
+        
+        NSLog("Starting...")
+        if let data = tempData {
+            NSLog("Starting... found")
+            do {
+                let temp = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! PlayState
+                NSLog("\(temp.isPlaying)")
+                playState.name = temp.name
+                playState.holes = temp.holes
+                playState.played = temp.played
+                playState.isPlaying = temp.isPlaying
+            } catch {
+                NSLog("Error loading state")
+            }
+        }
+    }
+    
+    func save() {
+        let defaultDB = UserDefaults.standard
+        
+        NSLog("Saving...")
+        do {
+            let data : Data = try NSKeyedArchiver.archivedData(withRootObject: playState, requiringSecureCoding: false)
+            defaultDB.set(data, forKey: "playState")
+            defaultDB.synchronize()
+        } catch {
+            NSLog("Error saving state")
+        }
+    }
 }

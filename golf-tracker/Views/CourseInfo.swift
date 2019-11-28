@@ -41,6 +41,8 @@ struct CourseInfo: View {
                         playState.holes = self.course.holes
                         playState.played = [Int?](repeating: nil, count: playState.holes.count)
                         playState.name = self.course.name
+                        
+                        playState.save()
                     }) {
                         Text("Play course").font(.title)
                         Image(systemName: "play")

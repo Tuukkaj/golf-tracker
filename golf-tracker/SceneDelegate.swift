@@ -40,24 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-        
-        let defaultDB = UserDefaults.standard
-        let tempData = defaultDB.object(forKey: "playState") as? Data
-        
-        NSLog("Loading...")
-        if let data = tempData {
-            NSLog("Loading... found")
-            do {
-                let temp = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! PlayState
-                NSLog("\(temp.isPlaying)")
-                playState.name = temp.name
-                playState.holes = temp.holes
-                playState.played = temp.played
-                playState.isPlaying = temp.isPlaying
-            } catch {
-                NSLog("Error loading state")
-            }
-        }
+        playState.load()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -68,26 +51,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        playState.load()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
-        let defaultDB = UserDefaults.standard
-        
-        NSLog("Saving...")
-            do {
-                let data : Data = try NSKeyedArchiver.archivedData(withRootObject: playState, requiringSecureCoding: false)
-                defaultDB.set(data, forKey: "playState")
-                defaultDB.synchronize()
-            } catch {
-                NSLog("Error saving state")
-            }
-        
-        
+        // to restore the scene back to its current state.        
     }
-
-
 }
 

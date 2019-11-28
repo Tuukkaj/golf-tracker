@@ -14,12 +14,14 @@ struct CoursePlay: View {
     @State var binders = [String]()
     @State var input : String = ""
     @ObservedObject var play = playState
+    
     var currentScore = 0
     
     func onSetScore() {
         if let num = Int(self.input) {
             play.played[self.selected] = num
             self.selected = self.selected < playState.played.count - 1 ? self.selected + 1 : playState.played.count - 1
+            playState.save() 
         }
         
         self.input = ""
@@ -38,6 +40,7 @@ struct CoursePlay: View {
         return VStack(alignment: .leading)  {
             Button(action: {
                 playState.isPlaying = false
+                playState.save()
             }) {
                 Text("Stop playing")
                 Image(systemName: "multiply")
