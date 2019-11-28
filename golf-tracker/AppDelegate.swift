@@ -15,6 +15,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let defaultDB = UserDefaults.standard
+        let tempData = defaultDB.object(forKey: "playState") as? Data
+        
+        NSLog("Starting...")
+        if let data = tempData {
+            NSLog("Starting... found")
+            do {
+                let temp = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! PlayState
+                NSLog("\(temp.isPlaying)")
+                playState.name = temp.name
+                playState.holes = temp.holes
+                playState.played = temp.played
+                playState.isPlaying = temp.isPlaying
+            } catch {
+                NSLog("Error loading state")
+            }
+        }
+        
         return true
     }
 
@@ -30,6 +49,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        let defaultDB = UserDefaults.standard
+        NSLog("Terminating...")
+            do {
+                let data : Data = try NSKeyedArchiver.archivedData(withRootObject: playState, requiringSecureCoding: false)
+                defaultDB.set(data, forKey: "playState")
+                defaultDB.synchronize()
+            } catch {
+                NSLog("Error saving state")
+            }
+        
     }
 
 

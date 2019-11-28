@@ -8,9 +8,7 @@
 
 import SwiftUI
 
-struct Course: View {
-    @ObservedObject var play = ObservedPlay()
-    
+struct CourseInfo: View {
     var course : CourseData
     
     var body: some View {
@@ -20,10 +18,8 @@ struct Course: View {
             par += hole
         }
         
-
-        
         return VStack(alignment: .leading) {
-            if play.isPlaying {
+            if playState.isPlaying {
                 Text("Play screen")
             } else {
                 HStack {
@@ -40,7 +36,12 @@ struct Course: View {
                             
                 HStack {
                     Spacer()
-                    Button(action: {() in self.play.isPlaying = true}) {
+                    Button(action: {
+                        playState.isPlaying = true
+                        playState.holes = self.course.holes
+                        playState.played = [Int?](repeating: nil, count: playState.holes.count)
+                        playState.name = self.course.name
+                    }) {
                         Text("Play course").font(.title)
                         Image(systemName: "play")
                     }.padding()
@@ -53,8 +54,8 @@ struct Course: View {
     }
 }
 
-struct Course_Previews: PreviewProvider {
+struct CourseInfo_Previews: PreviewProvider {
     static var previews: some View {
-        Course(course: CourseData(name: "Jaskan reikä",holes: [2,3,5,3,3,3,5]))
+        CourseInfo(course: CourseData(name: "Jaskan reikä",holes: [2,3,5,3,3,3,5]))
     }
 }

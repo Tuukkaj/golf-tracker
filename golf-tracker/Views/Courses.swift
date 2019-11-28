@@ -10,6 +10,11 @@ import SwiftUI
 
 struct Courses: View {
     @ObservedObject var courses = ObservedCourses()
+    @ObservedObject var state : PlayState
+    
+    init() {
+        state = playState
+    }
     
     func delete(at offsets: IndexSet) {
         courses.courses.remove(atOffsets: offsets)
@@ -17,7 +22,6 @@ struct Courses: View {
     }
     
     func updateCourses() {
-        NSLog("Updated courses")
         if let loaded = CourseSaver.loadCourses() {
             courses.courses = loaded
         } else {
@@ -26,35 +30,47 @@ struct Courses: View {
     }
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading){
-                NavigationLink(destination: AddCourse(updateMainView: updateCourses)) {
-                    Text("Add course")
-                    Image(systemName:"plus")
-                }.padding()
-                
-                if courses.courses.count > 0 {
-                    List {
-                        ForEach(courses.courses.indices, id: \.self) { i in
-                            HStack {
-                                NavigationLink(destination: Course(course: self.courses.courses[i])) {
-                                    Text("\(self.courses.courses[i].name)")
-                                }
-                            }.padding()
-                            
-                        }.onDelete(perform: delete)
-                    }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-                } else {
-                    
-                        Text("No courses added yet")
-                                        .font(.headline)
-                                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-                                        .padding()
+        VStack {
+            if playState.isPlaying {
+                Button("Disable play") {
+                    playState.isPlaying = false
                 }
-            }.padding()
-        
-            .navigationBarTitle("Courses")
-        }.onAppear(perform: updateCourses)
+            } else {
+                Button("Enable play") {
+                    playState.isPlaying = true
+                }
+                
+                NavigationView {
+                    VStack(alignment: .leading){
+                        NavigationLink(destination: AddCourse(updateMainView: updateCourses)) {
+                            Text("Add course")
+                            Image(systemName:"plus")
+                        }.padding()
+                        
+                        if courses.courses.count > 0 {
+                            List {
+                                ForEach(courses.courses.indices, id: \.self) { i in
+                                    HStack {
+                                        NavigationLink(destination: CourseInfo(course: self.courses.courses[i])) {
+                                            Text("\(self.courses.courses[i].name)")
+                                        }
+                                    }.padding()
+                                    
+                                }.onDelete(perform: delete)
+                            }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                        } else {
+                            
+                                Text("No courses added yet")
+                                                .font(.headline)
+                                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                                                .padding()
+                        }
+                    }.padding()
+                
+                    .navigationBarTitle("Courses")
+                }.onAppear(perform: updateCourses)
+            }
+        }
     }
 }
 
