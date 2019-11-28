@@ -13,15 +13,22 @@ struct CoursePlay: View {
     @State var selected = 0
     @State var binders = [String]()
     @State var input : String = ""
+    @State var complete = false
+    @State var dateInput = ""
+    @State var timeInput = ""
     @ObservedObject var play = playState
     
     var currentScore = 0
+    
+    func saveCourse() {
+        playState.clearAndSave()
+    }
     
     func onSetScore() {
         if let num = Int(self.input) {
             play.played[self.selected] = num
             self.selected = self.selected < playState.played.count - 1 ? self.selected + 1 : playState.played.count - 1
-            playState.save() 
+            playState.save()
         }
         
         self.input = ""
@@ -37,69 +44,113 @@ struct CoursePlay: View {
             }
         }
         
+        
         return VStack(alignment: .leading)  {
-            Button(action: {
-                playState.isPlaying = false
-                playState.save()
-            }) {
-                Text("Stop playing")
-                Image(systemName: "multiply")
-            }
-            Text(playState.name)
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            
-            Divider()
-            Text("Course par: \(totalPar)")
-            Text("Score: \(totalPar)")
-            
-            HStack {
-                Spacer()
-                Button(action: {self.selected = self.selected > 0 ? self.selected - 1 : 0}) {
-                    Image(systemName: "backward.fill")
-                    Text("Prev")
-                        .font(.title)
-                }
-                Text("\(self.selected + 1)")
-                    .font(.title)
-                
-                Button(action: {self.selected = self.selected < playState.played.count - 1 ? self.selected + 1 : playState.played.count - 1}) {
-                    Text("Next")
-                        .font(.title)
-                    Image(systemName: "forward.fill")
-                }
-                Spacer()
-            }
-            
-            HStack {
-                TextField("Enter score",text: $input)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .keyboardType(.numberPad)
-                Button(action: onSetScore) {
-                    Text("Set score")
-                }                
-            }
-            
-            Divider()
-            
-            List {
-                ForEach(playState.holes.indices, id: \.self) { i in
-                    Button(action: {self.selected = i}) {
-                        HStack {
-                            if i == self.selected {
-                                Image(systemName: "arrowtriangle.right.fill")
-                            }
-                            
-                            Text("\(i + 1) - ").fontWeight(i == self.selected ? .bold : .none)
-                            Text("Par: \(playState.holes[i]) - ").fontWeight(i == self.selected ? .bold : .none)
-                            Text("Score: \(self.play.played[i] != nil ? String(self.play.played[i]!) : "Not played")").fontWeight(i == self.selected ? .bold : .none)
-                            }
+            if self.complete {
+                VStack {
+                    Text("Enter time information")
+                        .font(.largeTitle)
+                    Text("This information will be displayed in history")
+
+                    Divider()
+                    
+                    HStack {
+                        Text("Date")
+                            .font(.title).padding()
+                        TextField("Date when course was played", text: $dateInput)
                     }.padding()
+
+                    HStack {
+                        Text("Time")
+                            .font(.title).padding()
+                        TextField("Time from and to when played", text: $timeInput)
+                    }.padding()
+                    
+                    Button(action: saveCourse) {
+                        Text("Save course")
+                            .font(.title)
+                        Image(systemName: "plus")
+                    }
+                }
+            } else {
+                VStack {
+                    HStack {
+                            Button(action: {
+                                playState.isPlaying = false
+                                playState.save()
+                            }) {
+                                Text("Stop playing")
+                                Image(systemName: "multiply")
+                            }
+                            Spacer()
+                            Button(action: {
+                                self.complete = true
+                                playState.save()
+                            }) {
+                                Text("Finish round")
+                                Image(systemName: "checkmark")
+                            }
+                        }
+                        
+                        Text(playState.name)
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                        
+                        Divider()
+                        Text("Course par: \(totalPar)")
+                        Text("Score: \(totalPar)")
+                        
+                        HStack {
+                            Spacer()
+                            Button(action: {self.selected = self.selected > 0 ? self.selected - 1 : 0}) {
+                                Image(systemName: "backward.fill")
+                                Text("Prev")
+                                    .font(.title)
+                            }
+                            Text("\(self.selected + 1)")
+                                .font(.title)
+                            
+                            Button(action: {self.selected = self.selected < playState.played.count - 1 ? self.selected + 1 : playState.played.count - 1}) {
+                                Text("Next")
+                                    .font(.title)
+                                Image(systemName: "forward.fill")
+                            }
+                            Spacer()
+                        }
+                        
+                        HStack {
+                            TextField("Enter score",text: $input)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .keyboardType(.numberPad)
+                            Button(action: onSetScore) {
+                                Text("Set score")
+                            }
+                        }
+                        
+                        Divider()
+                        
+                        List {
+                            ForEach(playState.holes.indices, id: \.self) { i in
+                                Button(action: {self.selected = i}) {
+                                    HStack {
+                                        if i == self.selected {
+                                            Image(systemName: "arrowtriangle.right.fill")
+                                        }
+                                        
+                                        Text("\(i + 1) - ").fontWeight(i == self.selected ? .bold : .none)
+                                        Text("Par: \(playState.holes[i]) - ").fontWeight(i == self.selected ? .bold : .none)
+                                        Text("Score: \(self.play.played[i] != nil ? String(self.play.played[i]!) : "Not played")").fontWeight(i == self.selected ? .bold : .none)
+                                        }
+                                }.padding()
+                            }
+                        }
+                        
+                    }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                    .padding()
                 }
             }
             
-        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-        .padding()
+            
     }
     
 }

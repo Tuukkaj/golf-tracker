@@ -76,4 +76,13 @@ class PlayState: NSObject, NSCoding, ObservableObject{
             NSLog("Error saving state")
         }
     }
+    
+    func clearAndSave() {
+        self.name = ""
+        self.holes = []
+        self.played = []
+        self.isPlaying = false
+        
+        self.save()
+    }
 }
