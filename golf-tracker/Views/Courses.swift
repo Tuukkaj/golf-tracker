@@ -30,16 +30,10 @@ struct Courses: View {
     }
     
     var body: some View {
-        VStack {
+        HStack(alignment: .top) {
             if playState.isPlaying {
-                Button("Disable play") {
-                    playState.isPlaying = false
-                }
+                CoursePlay()
             } else {
-                Button("Enable play") {
-                    playState.isPlaying = true
-                }
-                
                 NavigationView {
                     VStack(alignment: .leading){
                         NavigationLink(destination: AddCourse(updateMainView: updateCourses)) {
