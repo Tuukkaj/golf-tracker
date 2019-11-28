@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct Course: View {
+    @ObservedObject var play = ObservedPlay()
+    
     var course : CourseData
     
     var body: some View {
@@ -18,30 +20,35 @@ struct Course: View {
             par += hole
         }
         
-        return VStack(alignment: .leading) {
-            HStack {
-                Text("Par: \(par)")
-                    .font(.headline)
-                Spacer()
-            }.padding()
-            
-            List {
-                ForEach(course.holes.indices) { i in
-                    Text("Hole: \(i + 1) - Par \(self.course.holes[i])")
-                }
-            }
-                        
-            HStack {
-                Spacer()
-                Button(action: {() in NSLog("Play pressed")}) {
-                    Text("Play course").font(.title)
-                    Image(systemName: "play")
-                }
-                Spacer()
-            }
 
-            
-        .navigationBarTitle(course.name)
+        
+        return VStack(alignment: .leading) {
+            if play.isPlaying {
+                Text("Play screen")
+            } else {
+                HStack {
+                    Text("Par: \(par)")
+                        .font(.headline)
+                    Spacer()
+                }.padding()
+                
+                List {
+                    ForEach(course.holes.indices) { i in
+                        Text("Hole: \(i + 1) - Par \(self.course.holes[i])")
+                    }
+                }
+                            
+                HStack {
+                    Spacer()
+                    Button(action: {() in self.play.isPlaying = true}) {
+                        Text("Play course").font(.title)
+                        Image(systemName: "play")
+                    }.padding()
+                    Spacer()
+                }
+                
+                .navigationBarTitle(course.name)
+            }
         }
     }
 }
