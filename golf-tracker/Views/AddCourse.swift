@@ -72,7 +72,7 @@ struct AddCourse: View {
             if holes.count > 0 {
                 List {
                     ForEach(holes.indices, id: \.self) { i in
-                        Text("\(i): Par \(self.holes[i])")
+                        Text("\(i + 1): Par \(self.holes[i])")
                     }.onDelete(perform: delete)
                 }
             } else {
