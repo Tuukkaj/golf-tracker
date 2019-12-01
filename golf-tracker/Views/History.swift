@@ -9,8 +9,20 @@
 import SwiftUI
 
 struct History: View {
+    init() {
+        if let history = HistorySaver.loadHistory() {
+            NSLog("\(history)")
+        }
+    }
+
     var body: some View {
-        Text("History")
+        VStack {
+            Text("History")
+        }.onAppear(perform: {() in
+            if let history = HistorySaver.loadHistory() {
+                NSLog("\(history)")
+            }
+        })
     }
 }
 
