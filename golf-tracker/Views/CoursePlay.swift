@@ -81,12 +81,16 @@ struct CoursePlay: View {
                         Text("Date")
                             .font(.title).padding()
                         TextField("Date when course was played", text: $dateInput)
+                        .keyboardType(.numberPad)
+
                     }.padding()
 
                     HStack {
                         Text("Time")
                             .font(.title).padding()
                         TextField("Time from and to when played", text: $timeInput)
+                        .keyboardType(.numberPad)
+
                     }.padding()
                     
                     Button(action: saveCourse) {
