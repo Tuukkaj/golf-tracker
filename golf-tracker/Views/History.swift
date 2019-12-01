@@ -13,16 +13,23 @@ struct History: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(histories.indices, id: \.self) { i in
-                    HStack {
-                        NavigationLink(destination: HistoryInfo(history: self.histories[i])) {
-                            Text("\(self.histories[i].name) \(self.histories[i].date)")
-                                .font(.title)
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Select history event to inspect it")
+                        .foregroundColor(Color.gray)
+                    .padding()
+                }.padding()
+
+                List {
+                    ForEach(histories.indices, id: \.self) { i in
+                        HStack {
+                            NavigationLink(destination: HistoryInfo(history: self.histories[i])) {
+                                Text("\(self.histories[i].name) \(self.histories[i].date)")
+                                    .font(.title)
+                            }
                         }
                     }.padding()
-            }
-            
+                }
             .navigationBarTitle("History")
         }.onAppear(perform: {() in
                 if let history = HistorySaver.loadHistory() {
@@ -30,7 +37,6 @@ struct History: View {
                 }
             })
         }.navigationViewStyle(StackNavigationViewStyle())
-        
     }
 }
 

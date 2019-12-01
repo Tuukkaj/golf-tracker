@@ -41,6 +41,10 @@ struct Courses: View {
                             Image(systemName:"plus")
                         }.padding()
                         
+                        Text("Select course to inspect or play it")
+                            .foregroundColor(Color.gray)
+                            .padding()
+                        
                         if courses.courses.count > 0 {
                             List {
                                 ForEach(courses.courses.indices, id: \.self) { i in
