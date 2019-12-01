@@ -25,6 +25,7 @@
 		64AECE5D2387009D0086F20D /* AddCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AECE5C2387009D0086F20D /* AddCourse.swift */; };
 		64C08ED22394367600ED58A4 /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C08ED12394367600ED58A4 /* HistoryData.swift */; };
 		64C08ED42394374900ED58A4 /* HistorySaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C08ED32394374900ED58A4 /* HistorySaver.swift */; };
+		64C08ED62394480E00ED58A4 /* HistoryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C08ED52394480E00ED58A4 /* HistoryInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		64AECE5C2387009D0086F20D /* AddCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourse.swift; sourceTree = "<group>"; };
 		64C08ED12394367600ED58A4 /* HistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
 		64C08ED32394374900ED58A4 /* HistorySaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySaver.swift; sourceTree = "<group>"; };
+		64C08ED52394480E00ED58A4 /* HistoryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				6429C77C238EA4C600AEB468 /* CourseInfo.swift */,
 				6429C77E238EB61800AEB468 /* Settings.swift */,
 				646A4F67238FF3A100F32684 /* CoursePlay.swift */,
+				64C08ED52394480E00ED58A4 /* HistoryInfo.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				64AECE5D2387009D0086F20D /* AddCourse.swift in Sources */,
 				64AECE442386F4D30086F20D /* SceneDelegate.swift in Sources */,
 				646A4F5F238FC93300F32684 /* PlayState.swift in Sources */,
+				64C08ED62394480E00ED58A4 /* HistoryInfo.swift in Sources */,
 				6429C779238E83AE00AEB468 /* CourseSaver.swift in Sources */,
 				64AECE462386F4D30086F20D /* ContentView.swift in Sources */,
 				6429C77B238E9ABD00AEB468 /* ObservedCourses.swift in Sources */,

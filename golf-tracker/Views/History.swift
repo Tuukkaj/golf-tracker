@@ -9,20 +9,28 @@
 import SwiftUI
 
 struct History: View {
-    init() {
-        if let history = HistorySaver.loadHistory() {
-            NSLog("\(history)")
-        }
-    }
+    @State var histories = [] as! [HistoryData]
 
     var body: some View {
-        VStack {
-            Text("History")
-        }.onAppear(perform: {() in
-            if let history = HistorySaver.loadHistory() {
-                NSLog("\(history)")
+        NavigationView {
+            List {
+                ForEach(histories.indices, id: \.self) { i in
+                    HStack {
+                        NavigationLink(destination: HistoryInfo(history: self.histories[i])) {
+                            Text("\(self.histories[i].name) \(self.histories[i].date)")
+                                .font(.headline)
+                        }
+                    }.padding()
             }
-        })
+            
+            .navigationBarTitle("History")
+        }.onAppear(perform: {() in
+                if let history = HistorySaver.loadHistory() {
+                    self.histories = history
+                }
+            })
+        }.navigationViewStyle(StackNavigationViewStyle())
+        
     }
 }
 
