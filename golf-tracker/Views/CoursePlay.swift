@@ -90,7 +90,7 @@ struct CoursePlay: View {
                             }) {
                                 Text("Finish round")
                                 Image(systemName: "checkmark")
-                            }
+                            }.disabled(playState.played.contains(nil))
                         }
                         
                         Text(playState.name)
