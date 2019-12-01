@@ -21,7 +21,7 @@ struct CoursePlay: View {
     var currentScore = 0
     
     func saveCourse() {
-        HistorySaver.addHistory(data: HistoryData(name: playState.name, holes: playState.holes, played: playState.played as! [Int], dateAndTime: dateInput + ", " + timeInput))
+        HistorySaver.addHistory(data: HistoryData(name: playState.name, holes: playState.holes, played: playState.played as! [Int], date: dateInput, time: timeInput))
         playState.clearAndSave()
     }
     

@@ -48,9 +48,7 @@ class PlayState: NSObject, NSCoding, ObservableObject{
         let defaultDB = UserDefaults.standard
         let tempData = defaultDB.object(forKey: "playState") as? Data
         
-        NSLog("Starting...")
         if let data = tempData {
-            NSLog("Starting... found")
             do {
                 let temp = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! PlayState
                 NSLog("\(temp.isPlaying)")
@@ -67,7 +65,6 @@ class PlayState: NSObject, NSCoding, ObservableObject{
     func save() {
         let defaultDB = UserDefaults.standard
         
-        NSLog("Saving...")
         do {
             let data : Data = try NSKeyedArchiver.archivedData(withRootObject: playState, requiringSecureCoding: false)
             defaultDB.set(data, forKey: "playState")
