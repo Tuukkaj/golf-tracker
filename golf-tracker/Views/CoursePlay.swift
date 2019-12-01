@@ -49,6 +49,19 @@ struct CoursePlay: View {
         return VStack(alignment: .leading)  {
             if self.complete {
                 VStack {
+                    HStack {
+                        Button(action: {
+                            self.complete = false
+                        }) {
+                            Image(systemName: "arrow.left")
+                            Text("Back")
+                        }
+                        
+                        Spacer()
+                    }.padding()
+                    
+                    Spacer()
+                    
                     Text("Enter time information")
                         .font(.largeTitle)
                     Text("This information will be displayed in history")
@@ -72,6 +85,8 @@ struct CoursePlay: View {
                             .font(.title)
                         Image(systemName: "plus")
                     }
+                    
+                    Spacer()
                 }
             } else {
                 VStack {
