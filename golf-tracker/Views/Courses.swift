@@ -47,6 +47,7 @@ struct Courses: View {
                                     HStack {
                                         NavigationLink(destination: CourseInfo(course: self.courses.courses[i])) {
                                             Text("\(self.courses.courses[i].name)")
+                                                .font(.title)
                                         }
                                     }.padding()
                                     

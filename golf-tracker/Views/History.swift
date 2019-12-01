@@ -18,7 +18,7 @@ struct History: View {
                     HStack {
                         NavigationLink(destination: HistoryInfo(history: self.histories[i])) {
                             Text("\(self.histories[i].name) \(self.histories[i].date)")
-                                .font(.headline)
+                                .font(.title)
                         }
                     }.padding()
             }
