@@ -11,11 +11,14 @@ import SwiftUI
 struct Settings: View {
     var body: some View {
         VStack(alignment: .leading) {
-            VStack(alignment: .leading) {
-                Text("Settings")
-                    .font(.title)
-                    .fontWeight(.bold)
-            }.padding()
+            
+            Text("Settings")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding()
+        
+            
+            Divider()
             
             HStack {
                 Text("Remove courses data")
