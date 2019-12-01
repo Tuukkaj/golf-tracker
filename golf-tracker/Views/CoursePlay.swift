@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct CoursePlay: View {
-    @State var totalPar = 0
+    var totalPar : Int
+    
     @State var selected = 0
     @State var binders = [String]()
     @State var input : String = ""
@@ -17,8 +18,16 @@ struct CoursePlay: View {
     @State var dateInput = ""
     @State var timeInput = ""
     @ObservedObject var play = playState
-    
-    var currentScore = 0
+        
+    init() {
+        var temp = 0
+        
+        for i in 0..<playState.holes.count {
+            temp += playState.holes[i]
+        }
+        
+        totalPar = temp
+    }
     
     func saveCourse() {
         HistorySaver.addHistory(data: HistoryData(name: playState.name, holes: playState.holes, played: playState.played as! [Int], date: dateInput, time: timeInput))
@@ -41,7 +50,7 @@ struct CoursePlay: View {
         for i in 0..<playState.holes.count {
             let holePar = playState.holes[i]
             if let score = playState.played[i] {
-                currentScore += holePar - score
+                currentScore += score - holePar 
             }
         }
         
@@ -114,7 +123,7 @@ struct CoursePlay: View {
                         
                         Divider()
                         Text("Course par: \(totalPar)")
-                        Text("Score: \(totalPar)")
+                        Text("Score: \(currentScore)")
                         
                         HStack {
                             Spacer()
