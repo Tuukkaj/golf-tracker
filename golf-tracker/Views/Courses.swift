@@ -63,6 +63,7 @@ struct Courses: View {
                 
                     .navigationBarTitle("Courses")
                 }.onAppear(perform: updateCourses)
+                .navigationViewStyle(StackNavigationViewStyle())
             }
         }
     }
