@@ -32,7 +32,7 @@ struct Settings: View {
                 Text("Remove history data")
                     .font(.headline)
                 Spacer()
-                Button(action: {() in NSLog("Remove history")}) {
+                Button(action: {() in HistorySaver.removeFile()}) {
                     Image(systemName: "trash")
                 }
             }.padding()
