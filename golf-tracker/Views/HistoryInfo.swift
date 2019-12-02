@@ -15,13 +15,9 @@ struct HistoryInfo: View {
         var currentScore = 0
         var coursePar = 0
         
-        for i in 0..<playState.holes.count {
-            let holePar = playState.holes[i]
-            coursePar += holePar
-            
-            if let score = playState.played[i] {
-                currentScore += score - holePar
-            }
+        for i in 0..<history.holes.count {
+            coursePar += history.holes[i]
+            currentScore += history.played[i] - history.holes[i]
         }
         
         return VStack {
