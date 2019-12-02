@@ -34,6 +34,8 @@ struct History: View {
         }.onAppear(perform: {() in
                 if let history = HistorySaver.loadHistory() {
                     self.histories = history
+                } else {
+                    self.histories = []
                 }
             })
         }.navigationViewStyle(StackNavigationViewStyle())
