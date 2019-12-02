@@ -25,7 +25,7 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")
-                }.tag(1)
+                }.tag(2)
         }
     }
 }
