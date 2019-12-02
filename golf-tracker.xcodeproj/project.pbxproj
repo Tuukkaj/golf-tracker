@@ -36,7 +36,7 @@
 		6429C77E238EB61800AEB468 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		646A4F5E238FC93300F32684 /* PlayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayState.swift; sourceTree = "<group>"; };
 		646A4F67238FF3A100F32684 /* CoursePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursePlay.swift; sourceTree = "<group>"; };
-		64AECE3E2386F4D30086F20D /* golf-tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "golf-tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64AECE3E2386F4D30086F20D /* Golf tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Golf tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64AECE412386F4D30086F20D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64AECE432386F4D30086F20D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		64AECE452386F4D30086F20D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		64AECE3F2386F4D30086F20D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				64AECE3E2386F4D30086F20D /* golf-tracker.app */,
+				64AECE3E2386F4D30086F20D /* Golf tracker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,7 +147,7 @@
 			);
 			name = "golf-tracker";
 			productName = "golf-tracker";
-			productReference = 64AECE3E2386F4D30086F20D /* golf-tracker.app */;
+			productReference = 64AECE3E2386F4D30086F20D /* Golf tracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -362,7 +362,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "tuni.tuukka.golf-tracker";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Golf tracker";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -382,7 +382,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "tuni.tuukka.golf-tracker";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Golf tracker";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
