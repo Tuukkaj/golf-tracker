@@ -166,9 +166,9 @@ struct CoursePlay: View {
                                             Image(systemName: "arrowtriangle.right.fill")
                                         }
                                         
-                                        Text("\(i + 1) - ").fontWeight(i == self.selected ? .bold : .none)
-                                        Text("Par: \(playState.holes[i]) - ").fontWeight(i == self.selected ? .bold : .none)
-                                        Text("Score: \(self.play.played[i] != nil ? String(self.play.played[i]!) : "Not played")").fontWeight(i == self.selected ? .bold : .none)
+                                        Text("\(i + 1):").fontWeight(i == self.selected ? .bold : .none)
+                                        Text("Par \(playState.holes[i])").fontWeight(i == self.selected ? .bold : .none)
+                                        Text("Score \(self.play.played[i] != nil ? String(self.play.played[i]!) : "Not played")").fontWeight(i == self.selected ? .bold : .none)
                                         }
                                 }.padding()
                             }
